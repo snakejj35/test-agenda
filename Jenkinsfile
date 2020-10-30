@@ -12,13 +12,13 @@ pipeline {
       stage('Test') {
          steps {
             echo 'Testing the Code......'
-            bat 'mvn test'
+            bat 'mvn test -o'
          }
       }
       stage('Build') {
          steps {
             echo 'Building the Code .....'
-            bat 'mvn clean install -Dmaven.test.skip=true -o  '
+            bat 'mvn clean install -Dmaven.test.skip=true -o'
          }
       }
       stage('Deploy') {
