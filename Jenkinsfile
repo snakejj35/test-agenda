@@ -2,10 +2,11 @@ pipeline {
    agent any
 
    stages {
-      stage('Build') {
+
+      stage('Compile') {
          steps {
-            echo 'Building the Code .....'
-            bat 'mvn clean'
+            echo 'Compiling the project .....'
+            bat 'mvn compile'
          }
       }
       stage('Test') {
@@ -14,10 +15,10 @@ pipeline {
             bat 'mvn test'
          }
       }
-      stage('Compile') {
+      stage('Build') {
          steps {
-            echo 'Compiling the project .....'
-            bat 'mvn compile'
+            echo 'Building the Code .....'
+            bat 'mvn clean install -Dmaven.test.skip=true -o  '
          }
       }
       stage('Deploy') {
